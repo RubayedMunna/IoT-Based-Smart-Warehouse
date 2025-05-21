@@ -14,7 +14,8 @@ function Dashboard() {
     humidity: 0, pump: 0, fan: 0, servo: 0,
   });
 
-  const [sensorHistory, setSensorHistory] = useState([]);
+
+  const [, setSensorHistory] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [statusMessage, setStatusMessage] = useState('');
@@ -27,8 +28,7 @@ function Dashboard() {
   };
 
  
-
-  const updateThingSpeakData = useCallback(async () => {
+const updateThingSpeakData = useCallback(async () => {
   try {
     setLoading(true);
     const data = await fetchThingSpeakData();
@@ -38,23 +38,32 @@ function Dashboard() {
       setSensorData(data);
       setSensorHistory(prev => [data, ...prev.slice(0, 9)]);
       setStatusMessage('Status updated from ThingSpeak');
-    } else if (sensorHistory.length > 0) {
-      setSensorData(sensorHistory[0]);
-      setStatusMessage('Used last known good data due to null values');
+    } else {
+      setSensorHistory(prev => {
+        if (prev.length > 0) {
+          setSensorData(prev[0]);
+          setStatusMessage('Used last known good data due to null values');
+        }
+        return prev;
+      });
     }
 
     setError(null);
   } catch {
-    if (sensorHistory.length > 0) {
-      setSensorData(sensorHistory[0]);
-      setStatusMessage('Used last known good data due to fetch error');
-    } else {
-      setError('Failed to fetch data from ThingSpeak');
-    }
+    setSensorHistory(prev => {
+      if (prev.length > 0) {
+        setSensorData(prev[0]);
+        setStatusMessage('Used last known good data due to fetch error');
+      } else {
+        setError('Failed to fetch data from ThingSpeak');
+      }
+      return prev;
+    });
   } finally {
     setLoading(false);
   }
-}, [sensorHistory]);
+}, []); // <— now NO dependencies!
+
 
 
  const updateTalkBackData = useCallback(async () => {
