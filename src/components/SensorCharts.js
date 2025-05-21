@@ -55,7 +55,7 @@ const doughnutOptions = {
     tooltip: {
       callbacks: {
         label: function (tooltipItem) {
-          return `${tooltipItem.label}: ${tooltipItem.raw}%`;
+          return `${tooltipItem.label}: ${tooltipItem.raw}`;
         }
       }
     }
@@ -77,7 +77,7 @@ function SensorCharts({ sensorData }) {
                   options={doughnutOptions}
                 />
               </div>
-              <p className="mt-3 fw-semibold">Current Level: {sensorData[key]}%</p>
+              <p className="mt-3 fw-semibold">Current Level: {sensorData[key]}</p>
             </div>
           </div>
         </div>
