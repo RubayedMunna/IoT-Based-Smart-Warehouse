@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   fetchThingSpeakData,
   fetchTalkBackQueue,
@@ -26,60 +26,64 @@ function Dashboard() {
       .catch(() => setError('Failed to send TalkBack command'));
   };
 
-  const updateThingSpeakData = async () => {
-    try {
-      setLoading(true);
-      const data = await fetchThingSpeakData();
+ 
 
-      const isValid = Object.values(data).every(val => val !== null && val !== undefined && val !== '');
-      if (isValid) {
-        setSensorData(data);
-        setSensorHistory(prev => [data, ...prev.slice(0, 9)]);
-        setStatusMessage('Status updated from ThingSpeak');
-      } else if (sensorHistory.length > 0) {
-        setSensorData(sensorHistory[0]);
-        setStatusMessage('Used last known good data due to null values');
-      }
+  const updateThingSpeakData = useCallback(async () => {
+  try {
+    setLoading(true);
+    const data = await fetchThingSpeakData();
 
-      setError(null);
-    } catch {
-      if (sensorHistory.length > 0) {
-        setSensorData(sensorHistory[0]);
-        setStatusMessage('Used last known good data due to fetch error');
-      } else {
-        setError('Failed to fetch data from ThingSpeak');
-      }
-    } finally {
-      setLoading(false);
+    const isValid = Object.values(data).every(val => val !== null && val !== undefined && val !== '');
+    if (isValid) {
+      setSensorData(data);
+      setSensorHistory(prev => [data, ...prev.slice(0, 9)]);
+      setStatusMessage('Status updated from ThingSpeak');
+    } else if (sensorHistory.length > 0) {
+      setSensorData(sensorHistory[0]);
+      setStatusMessage('Used last known good data due to null values');
     }
-  };
 
-  const updateTalkBackData = async () => {
-    try {
-      const tbData = await fetchTalkBackQueue();
-      const latestCommand = tbData?.[0]?.command_string;
-
-      if (latestCommand === 'OPEN' || latestCommand === 'CLOSE') {
-        const newServo = latestCommand === 'OPEN' ? 90 : 0;
-        setSensorData(prev => ({ ...prev, servo: newServo }));
-        setStatusMessage(`Door status updated: ${latestCommand}`);
-      }
-    } catch {
-      // Optional: handle talkback fetch errors silently or with a message
+    setError(null);
+  } catch {
+    if (sensorHistory.length > 0) {
+      setSensorData(sensorHistory[0]);
+      setStatusMessage('Used last known good data due to fetch error');
+    } else {
+      setError('Failed to fetch data from ThingSpeak');
     }
-  };
+  } finally {
+    setLoading(false);
+  }
+}, [sensorHistory]);
 
-  useEffect(() => {
-    updateThingSpeakData();
-    const tsInterval = setInterval(updateThingSpeakData, 15000);
-    return () => clearInterval(tsInterval);
-  }, []);
 
-  useEffect(() => {
-    updateTalkBackData();
-    const tbInterval = setInterval(updateTalkBackData, 5000);
-    return () => clearInterval(tbInterval);
-  }, []);
+ const updateTalkBackData = useCallback(async () => {
+  try {
+    const tbData = await fetchTalkBackQueue();
+    const latestCommand = tbData?.[0]?.command_string;
+
+    if (latestCommand === 'OPEN' || latestCommand === 'CLOSE') {
+      const newServo = latestCommand === 'OPEN' ? 90 : 0;
+      setSensorData(prev => ({ ...prev, servo: newServo }));
+      setStatusMessage(`Door status updated: ${latestCommand}`);
+    }
+  } catch {
+    // handle error silently
+  }
+}, []);
+
+
+useEffect(() => {
+  updateThingSpeakData();
+  const tsInterval = setInterval(updateThingSpeakData, 15000);
+  return () => clearInterval(tsInterval);
+}, [updateThingSpeakData]);
+
+useEffect(() => {
+  updateTalkBackData();
+  const tbInterval = setInterval(updateTalkBackData, 5000);
+  return () => clearInterval(tbInterval);
+}, [updateTalkBackData]);
 
   return (
     <>
