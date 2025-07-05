@@ -1,5 +1,13 @@
 # 🏭✨ Smart Warehouse System | IoT Project
 
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx.png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Group_04_Smart_Warehouse_Management_System.jpg" alt="project logo">
+</p>
+
 > 🎯 **Objective**: A real-time, sensor-powered smart warehouse system designed to monitor environmental hazards and trigger automated safety actions using the Internet of Things (IoT).
 
 ---
@@ -87,4 +95,69 @@ String apiKey = "YOUR_THINGSPEAK_API_KEY";
 Save and upload the code again to your ESP32.
 
 ```
+
+---
+## 🎞️ Highlights from Our IoT Presentation Slides
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx.png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(2).png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(3).png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(4).png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(5).png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(6).png" alt="project logo">
+</p>
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(7).png" alt="project logo">
+</p>
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(8).png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(8).png" alt="project logo">
+</p>
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(9).png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(10).png" alt="project logo">
+</p>
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(11).png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(12).png" alt="project logo">
+</p>
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(13).png" alt="project logo">
+</p>
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(14).png" alt="project logo">
+</p>
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(15).png" alt="project logo">
+</p>
+
+<p align="center">
+    <img src="https://github.com/Akila-Nipo/django_temporary/blob/main/Smart-Warehouse-IoT-System-Environmental-Safety-and-Control%20(1).pptx%20(16).png" alt="project logo">
+</p>
+
 
