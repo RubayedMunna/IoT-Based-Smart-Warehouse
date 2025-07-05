@@ -38,54 +38,53 @@ Open **Git Bash**, **CMD**, or **PowerShell**, then run:
 git clone https://github.com/your-username/smart-warehouse-system.git
 cd smart-warehouse-system
 ```
-⚙️ 2. Install the ESP32 Board in Arduino IDE
-Open Arduino IDE
+### ⚙️ 2. Install the ESP32 Board in Arduino IDE
 
-Go to File → Preferences
+1. **Open Arduino IDE**
+2. Go to **File → Preferences**
+3. In the **"Additional Board Manager URLs"** field, paste the following URL:
 
-In the "Additional Board Manager URLs" field, paste the following URL:
+   ```text
+   https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+   ```
+4. Click OK to save.
 
-text
-Copy
-Edit
-https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-Click OK to save
+5. Go to Tools → Board → Boards Manager
 
-Go to Tools → Board → Boards Manager
+6. Search for: ESP32 by Espressif Systems
 
-Search for: ESP32 by Espressif Systems
+7. Click Install
 
-Click Install
+ ### 🔌 3. Open and Upload the Code
 
-🔌 3. Open and Upload the Code
-Connect your ESP32 to your PC via USB
+1. **Connect your ESP32** to your PC via USB
 
-In Arduino IDE:
+2. Open **Arduino IDE** and follow these steps:
 
-Open the .ino file from the cloned repository (File → Open)
+   - Go to `File → Open`  
+     ➤ Open the `.ino` file from the cloned repository
 
-Go to Tools and configure:
+   - Go to `Tools` and configure:
+     - **Board**: Select your ESP32 board (e.g., `ESP32 Dev Module`)
+     - **Port**: Select the correct **COM port**
 
-Board: Select your board (e.g., ESP32 Dev Module)
+3. Click the ✅ **Upload** button to flash the code onto your ESP32
 
-Port: Select the COM port your board is connected to
+### 🌐 **4. Connect to ThingSpeak**
 
-Click the ✅ Upload button to flash the code
+1. Go to [ThingSpeak.com](https://thingspeak.com) and create a free account.
 
-🌐 4. Connect to ThingSpeak
-Create a free account at ThingSpeak.com
+2. Create a new channel.
 
-Create a new channel
+3. Copy your Write API Key.
 
-Copy your Write API Key
+4. In the code, update the following lines with your Wi-Fi and API credentials:
 
-In the code, update the following lines with your Wi-Fi and ThingSpeak details:
-
-cpp
-Copy
-Edit
+```cpp
 const char* ssid = "YOUR_WIFI_NAME";
 const char* password = "YOUR_WIFI_PASSWORD";
 String apiKey = "YOUR_THINGSPEAK_API_KEY";
-Upload the updated code again to your ESP32
+Save and upload the code again to your ESP32.
+
+```
 
